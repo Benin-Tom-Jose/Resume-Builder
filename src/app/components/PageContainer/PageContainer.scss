@@ -1,0 +1,21 @@
+$module: "content";
+
+.#{$module} {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 1rem;
+
+    .#{$module}__container {
+        width: 100%;
+        max-width: 1200px;
+
+        @media (min-width: 576px) {
+            width: 90%;
+        }
+
+        @media (min-width: 992px) {
+            width: 80%;
+        }
+    }
+}

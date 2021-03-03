@@ -1,0 +1,15 @@
+$theme-colors: (
+    "primary": #2f3a90,
+);
+
+body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    user-select: none;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+}
+
+@import "~bootstrap/scss/bootstrap";

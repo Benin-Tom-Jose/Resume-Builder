@@ -1,0 +1,48 @@
+$module: "footer";
+
+.#{$module} {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0 2rem;
+    font-size: 1rem;
+
+    .#{$module}__container {
+        width: 90%;
+        max-width: 1200px;
+        display: flex;
+        justify-content: space-between;
+
+        @media (min-width: 992px) {
+            width: 65%;
+        }
+
+        .#{$module}__container__section {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 2rem;
+
+            .section-logo {
+                max-width: 3rem;
+                height: auto;
+            }
+
+            .section-header {
+                font-weight: 700;
+                margin-bottom: 0.8rem;
+                color: var(--primary);
+            }
+
+            .section-link {
+                padding: 0.4rem 0;
+                text-decoration: none;
+                line-height: 1.5;
+                color: var(--gray-dark);
+
+                &:hover {
+                    color: var(--gray);
+                }
+            }
+        }
+    }
+}

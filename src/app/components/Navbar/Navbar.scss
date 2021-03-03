@@ -1,0 +1,61 @@
+$module: "navbar";
+
+.#{$module} {
+    font-size: 1.6rem;
+    width: 100%;
+    padding-top: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media (max-width: 767px) {
+        padding-top: 0.5rem;
+    }
+
+    .#{$module}__container {
+        width: 100%;
+        max-width: 1200px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        @media (min-width: 576px) {
+            width: 90%;
+        }
+
+        @media (min-width: 992px) {
+            width: 80%;
+        }
+
+        .#{$module}-brand {
+            .#{$module}-brand__logo {
+                width: 3rem;
+                height: auto;
+            }
+
+            .#{$module}-brand__name {
+                padding: 0 0.5rem;
+                font-weight: 800;
+                font-family: cursive;
+                color: var(--primary);
+            }
+        }
+
+        .#{$module}-nav {
+            .nav-item {
+                display: flex;
+
+                .btn {
+                    padding: 0.4rem 2rem;
+                    letter-spacing: 0.1rem;
+                    font-weight: 700;
+                    font-size: 0.8rem;
+
+                    @media (max-width: 767px) {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
