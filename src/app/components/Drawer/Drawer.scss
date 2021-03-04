@@ -1,0 +1,41 @@
+$module: "drawer";
+
+.#{$module} {
+    background: #fff;
+    height: 100%;
+
+    .nav {
+        .nav-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 6rem;
+
+            &:nth-child(2) {
+                margin-left: auto;
+            }
+            &:last-child {
+                margin-right: auto;
+            }
+
+            .nav-link {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+
+                .brand-logo {
+                    height: 4rem;
+                    width: auto;
+                }
+
+                .link-icon {
+                    fill: var(--primary);
+                }
+                .link-text {
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}
