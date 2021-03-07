@@ -7,32 +7,6 @@ $module: "resume-content";
     .section-edit {
         max-width: 35rem;
         margin: 0 auto;
-
-        .personal-details {
-            .card-header {
-                .header {
-                    font-size: 1.4rem;
-                    font-weight: 700;
-                }
-            }
-            .card-body {
-            }
-            .card-footer {
-                .btn {
-                    padding: 0.375rem 2rem;
-                    margin-right: 1rem;
-
-                    &:last-child {
-                        margin-right: 0;
-                    }
-
-                    .icon {
-                        margin-right: 0.25rem;
-                        fill: #fff;
-                    }
-                }
-            }
-        }
     }
 
     .section-view {
@@ -46,6 +20,10 @@ $module: "resume-content";
     }
 
     .#{$module}__section {
+        // max-width: 35rem;
+        // margin: auto;
+        // margin-bottom: 1rem;
+
         @media (min-width: 992px) {
             max-height: 100vh;
             overflow: auto;

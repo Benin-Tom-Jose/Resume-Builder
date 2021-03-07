@@ -36,7 +36,6 @@ export const RESUME_SAMPLE_DATA = {
         "email": "smith.john@gmail.com",
         "phone": "9733016177",
         "address": "Boston, USA"
-        // "address": "Mazjid Road, Nettoor P. O., 682040 Ernakulam, India"
     },
     "education": [
         {

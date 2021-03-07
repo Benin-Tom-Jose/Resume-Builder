@@ -8,8 +8,7 @@ $module: "resume";
         padding: 1rem 1.5rem;
 
         &__header {
-            margin-top: 1rem;
-            margin-bottom: 2rem;
+            margin: 1rem 0;
 
             .name {
                 font-size: 1.5rem;
@@ -65,9 +64,15 @@ $module: "resume";
         }
 
         &__content {
+            margin: 1.5rem 0;
+
             .section {
                 margin-bottom: 2rem;
                 font-size: 0.8rem;
+
+                &:last-child{
+                    margin-bottom: 0;
+                }
 
                 &__header {
                     font-size: 1rem;
@@ -96,7 +101,7 @@ $module: "resume";
                 .tag-container {
                     .tag {
                         display: inline-block;
-                        border-radius: 2rem;
+                        border-radius: 0.5rem;
                         padding: 0.25rem 0.5rem;
                         font-size: 0.8rem;
                         margin: 0.25rem;

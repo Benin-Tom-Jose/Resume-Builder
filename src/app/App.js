@@ -1,12 +1,16 @@
 import React from 'react';
 
-import './App.scss';
 import Routes from '../config/Routes';
+import { Provider } from 'react-redux';
+import Store from '../redux/ConfigureStore';
+import './App.scss';
 
 
 const App = () => {
   return (
-    <Routes />
+    <Provider store={Store}>
+      <Routes />
+    </Provider>
   );
 }
 

@@ -1,15 +1,15 @@
 $module: "navbar";
 
 .#{$module} {
-    font-size: 1.6rem;
+    font-size: 1.6rem !important;
     width: 100%;
-    padding-top: 2.5rem;
+    padding-top: 2.5rem !important;
     display: flex;
-    justify-content: center;
+    justify-content: center !important;
     align-items: center;
 
     @media (max-width: 767px) {
-        padding-top: 0.5rem;
+        padding-top: 0.5rem !important;
     }
 
     .#{$module}__container {
