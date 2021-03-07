@@ -108,8 +108,6 @@ class EditResume extends Component {
 
         });
 
-        console.log(updatedSkills);
-
         this.props.setProfile({ ...this.props.profile, [section]: updatedSkills });
     };
 
