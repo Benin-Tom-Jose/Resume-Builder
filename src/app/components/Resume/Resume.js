@@ -78,7 +78,7 @@ const Resume = (props) => {
                                 </section>
                             }
                         </div>
-                        <div className="col-sm-4">
+                        <div className={`${(showEducation || showExperience) ? 'col-sm-4' : 'col-sm-12'}`}>
                             {
                                 showSkills &&
                                 <section className="section section-skills">

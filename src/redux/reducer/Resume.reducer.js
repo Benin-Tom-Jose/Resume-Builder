@@ -1,4 +1,4 @@
-import { RESUME_DATA_TEMPLATE,RESUME_SAMPLE_DATA } from "../../config/SampleData";
+import { RESUME_DATA_TEMPLATE } from "../../config/SampleData";
 import {
     RESUME_RESET_PROFILE,
     RESUME_SET_PROFILE
@@ -6,7 +6,6 @@ import {
 
 const initialState = {
     profile: RESUME_DATA_TEMPLATE,
-    profile: RESUME_SAMPLE_DATA,
 };
 
 const ResumeReducer = (state = initialState, action) => {
