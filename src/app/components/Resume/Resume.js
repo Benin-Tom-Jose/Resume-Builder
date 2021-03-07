@@ -42,7 +42,7 @@ const Resume = (props) => {
                 }
                 <main className="resume__container__content">
                     <div className="row">
-                        <div className={`${showSkills ? 'col-sm-8' : 'col-sm-12'}`}>
+                        <div className={`${showSkills ? 'col-8' : 'col-12'}`}>
                             {
                                 showEducation &&
                                 <section className="section section-education">
@@ -78,7 +78,7 @@ const Resume = (props) => {
                                 </section>
                             }
                         </div>
-                        <div className={`${(showEducation || showExperience) ? 'col-sm-4' : 'col-sm-12'}`}>
+                        <div className={`${(showEducation || showExperience) ? 'col-4' : 'col-12'}`}>
                             {
                                 showSkills &&
                                 <section className="section section-skills">
