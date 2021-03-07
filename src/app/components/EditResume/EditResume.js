@@ -1,29 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Typeahead } from 'react-bootstrap-typeahead';
 import { Button, Card, Col, Form } from 'react-bootstrap';
 
+import { RESUME_DEFAULT_SKILLS } from '../../../config/SampleData';
 import { resetResumeProfile, setResumeProfile } from '../../../redux/action/Resume.action';
 import './EditResume.scss';
 
 class EditResume extends Component {
     state = {
-        isValid: false,
+        defaultSkillSet: RESUME_DEFAULT_SKILLS.sort(),
     };
 
     componentWillUnmount() {
         this.props.resetProfile();
     }
-
-    printDiv = () => {
-        var printContents = document.getElementById("printable").innerHTML;
-        var originalContents = document.body.innerHTML;
-
-        document.body.innerHTML = printContents;
-        document.documentElement.style.fontSize = "200%";
-        window.print();
-        document.body.innerHTML = originalContents;
-        document.documentElement.style.fontSize = "100%";
-    };
 
     handlePersonalFormInputChange = (event, section = "personal") => {
         let key = event.target.name;
@@ -101,6 +92,27 @@ class EditResume extends Component {
         this.props.setProfile({ ...this.props.profile, [section]: experienceDetails });
     };
 
+    handleSkillChange = (value) => {
+        let section = "skills",
+            updatedSkills = [];
+
+        value.map(v => {
+
+            if (typeof v === "string") {
+                updatedSkills.push(v);
+            } else if (typeof v === "object") {
+                updatedSkills.push(v.label);
+            }
+
+            return null;
+
+        });
+
+        console.log(updatedSkills);
+
+        this.props.setProfile({ ...this.props.profile, [section]: updatedSkills });
+    };
+
     getYearListTemplate = () => {
         let template = [],
             currentYear = new Date().getFullYear(),
@@ -124,7 +136,7 @@ class EditResume extends Component {
                             <h1 className="header">Personal Details</h1>
                         </Card.Header>
                         <Card.Body>
-                            <Form validated={this.state.isValid}>
+                            <Form>
                                 <Form.Row>
                                     <Col>
                                         <Form.Group controlId="formName">
@@ -198,17 +210,17 @@ class EditResume extends Component {
                 <div className="edit-resume__section education-details">
                     <Card>
                         <Card.Header>
-                            <h1 className="header">Educational Details</h1>
+                            <h1 className="header">Education</h1>
                         </Card.Header>
                         <Card.Body>
                             {
                                 profile.education &&
                                 profile.education.map((edu_item, index) =>
                                     <div className="education_details__item" key={index}>
-                                        <Form validated={this.state.isValid}>
+                                        <Form>
                                             <Form.Row>
                                                 <Col>
-                                                    <Form.Group controlId="formDegree">
+                                                    <Form.Group controlId={`formDegree-education-${index}`}>
                                                         <Form.Label>Degree</Form.Label>
                                                         <Form.Control
                                                             required
@@ -225,7 +237,7 @@ class EditResume extends Component {
                                             </Form.Row>
                                             <Form.Row>
                                                 <Col>
-                                                    <Form.Group controlId="formInstitute">
+                                                    <Form.Group controlId={`formInstitute-education-${index}`}>
                                                         <Form.Label>Institute</Form.Label>
                                                         <Form.Control
                                                             required
@@ -242,7 +254,7 @@ class EditResume extends Component {
                                             </Form.Row>
                                             <Form.Row>
                                                 <Col>
-                                                    <Form.Group controlId="formStartYear">
+                                                    <Form.Group controlId={`formStartYear-education-${index}`}>
                                                         <Form.Label>Start Year</Form.Label>
                                                         <Form.Control
                                                             required
@@ -257,7 +269,7 @@ class EditResume extends Component {
                                                     </Form.Group>
                                                 </Col>
                                                 <Col>
-                                                    <Form.Group controlId="formEndYear">
+                                                    <Form.Group controlId={`formEndYear-education-${index}`}>
                                                         <Form.Label>End Year</Form.Label>
                                                         <Form.Control
                                                             required
@@ -277,7 +289,7 @@ class EditResume extends Component {
                                                     <Form.Check
                                                         custom
                                                         type="checkbox"
-                                                        id={`isCurrent-education-${index}`}
+                                                        id={`formIsCurrent-education-${index}`}
                                                         label="Present (Current)"
                                                         name="isCurrent"
                                                         checked={edu_item.isCurrent}
@@ -312,20 +324,50 @@ class EditResume extends Component {
                         </Card.Body>
                     </Card>
                 </div>
+                <div className="edit-resume__section skills-details">
+                    <Card>
+                        <Card.Header>
+                            <h1 className="header">Skills</h1>
+                        </Card.Header>
+                        <Card.Body>
+                            <Form>
+                                <Form.Row>
+                                    <Col>
+                                        <Form.Group controlId="formSkills">
+                                            <Form.Label>Skills</Form.Label>
+                                            <Typeahead
+                                                multiple
+                                                allowNew
+                                                id="formSkills"
+                                                onChange={this.handleSkillChange}
+                                                newSelectionPrefix="Add a new skill : "
+                                                options={this.state.defaultSkillSet}
+                                                placeholder="Choose skills..."
+                                                selected={profile.skills}
+                                            />
+                                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                                            <Form.Control.Feedback type="invalid">Invalid skills !!!</Form.Control.Feedback>
+                                        </Form.Group>
+                                    </Col>
+                                </Form.Row>
+                            </Form>
+                        </Card.Body>
+                    </Card>
+                </div>
                 <div className="edit-resume__section experience-details">
                     <Card>
                         <Card.Header>
-                            <h1 className="header">Experience Details</h1>
+                            <h1 className="header">Experience</h1>
                         </Card.Header>
                         <Card.Body>
                             {
                                 profile.experience &&
                                 profile.experience.map((exp_item, index) =>
                                     <div className="experience_details__item" key={index}>
-                                        <Form validated={this.state.isValid}>
+                                        <Form>
                                             <Form.Row>
                                                 <Col>
-                                                    <Form.Group controlId="formDesignation">
+                                                    <Form.Group controlId={`formDesignation-education-${index}`}>
                                                         <Form.Label>Designation</Form.Label>
                                                         <Form.Control
                                                             required
@@ -342,7 +384,7 @@ class EditResume extends Component {
                                             </Form.Row>
                                             <Form.Row>
                                                 <Col>
-                                                    <Form.Group controlId="formCompany">
+                                                    <Form.Group controlId={`formCompany-education-${index}`}>
                                                         <Form.Label>Company</Form.Label>
                                                         <Form.Control
                                                             required
@@ -359,7 +401,7 @@ class EditResume extends Component {
                                             </Form.Row>
                                             <Form.Row>
                                                 <Col>
-                                                    <Form.Group controlId="formStartYear">
+                                                    <Form.Group controlId={`formStartYear-education-${index}`}>
                                                         <Form.Label>Start Year</Form.Label>
                                                         <Form.Control
                                                             required
@@ -374,7 +416,7 @@ class EditResume extends Component {
                                                     </Form.Group>
                                                 </Col>
                                                 <Col>
-                                                    <Form.Group controlId="formEndYear">
+                                                    <Form.Group controlId={`formEndYear-education-${index}`}>
                                                         <Form.Label>End Year</Form.Label>
                                                         <Form.Control
                                                             required
@@ -394,7 +436,7 @@ class EditResume extends Component {
                                                     <Form.Check
                                                         custom
                                                         type="checkbox"
-                                                        id={`isCurrent-experience-${index}`}
+                                                        id={`formIsCurrent-experience-${index}`}
                                                         label="Present (Current)"
                                                         name="isCurrent"
                                                         checked={exp_item.isCurrent}

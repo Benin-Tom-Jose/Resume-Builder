@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useSelector } from 'react-redux';
+import { useReactToPrint } from 'react-to-print';
+import { Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 import Resume from '../../components/Resume/Resume';
 import EditResume from '../../components/EditResume/EditResume';
@@ -9,6 +11,11 @@ import './ResumeContent.scss';
 const ResumeContent = () => {
 
     const RESUME_PROFILE = useSelector(state => state.ResumeReducer.profile);
+    const resumeRef = useRef();
+
+    const handleResumeDownload = useReactToPrint({
+        content: () => resumeRef.current,
+    });
 
     return (
         <DrawerContainer>
@@ -18,7 +25,14 @@ const ResumeContent = () => {
                         <EditResume />
                     </div>
                     <div className="col-lg-6 resume-content__section section-view" id="printable">
-                        <Resume profile={RESUME_PROFILE} />
+                        <div className="resume__printable" ref={resumeRef}>
+                            <Resume profile={RESUME_PROFILE} />
+                        </div>
+                        <OverlayTrigger
+                            overlay={<Tooltip id="button-download">Download</Tooltip>}
+                        >
+                            <Button variant="primary" className="btn-download" onClick={handleResumeDownload}></Button>
+                        </OverlayTrigger>
                     </div>
                 </div>
             </div>

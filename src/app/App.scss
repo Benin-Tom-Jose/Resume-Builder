@@ -14,6 +14,31 @@ body {
     ::-webkit-scrollbar {
         display: none;
     }
+
+    .rbt {
+        &-input-multi {
+            &.focus {
+                border-color: var(--primary);
+                box-shadow: 0 0 0 0.2rem #2f3a9040;
+            }
+        }
+
+        &-token {
+            color: #fff;
+            font-size: 0.9rem;
+
+            &-removeable {
+                border: 1px solid var(--primary);
+                background: var(--primary);
+            }
+
+            &-active {
+                border: 1px solid var(--danger);
+                background-color: var(--danger);
+            }
+        }
+    }
 }
 
+@import "~react-bootstrap-typeahead/css/Typeahead.css";
 @import "~bootstrap/scss/bootstrap";

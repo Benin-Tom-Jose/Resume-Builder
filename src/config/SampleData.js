@@ -86,3 +86,12 @@ export const RESUME_SAMPLE_DATA = {
         "MongoDB"
     ]
 };
+
+export const RESUME_DEFAULT_SKILLS = [
+    "React",
+    "JavaScript",
+    "Python",
+    "Node",
+    "jQuery",
+    "CSS"
+];

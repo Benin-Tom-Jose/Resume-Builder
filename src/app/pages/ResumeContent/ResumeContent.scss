@@ -13,17 +13,31 @@ $module: "resume-content";
         max-width: 35rem;
         margin: auto;
         margin-top: 1rem;
+        position: relative;
 
         @media (min-width: 992px) {
             margin-top: 0;
         }
+
+        .btn-download {
+            position: absolute;
+            bottom: 1rem;
+            right: 2rem;
+            height: 3rem;
+            width: 3rem;
+            border-radius: 50%;
+            background-position: center;
+            background-repeat: no-repeat;
+            box-shadow: 1px 1px 10px 1px #777;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' height='25' fill='%23fff' id='Capa_1' x='0px' y='0px' viewBox='0 0 512 512' style='enable-background:new 0 0 512 512;' xml:space='preserve'%3E%3Cg%3E%3Cg%3E%3Cpath d='M412.907,214.08C398.4,140.693,333.653,85.333,256,85.333c-61.653,0-115.093,34.987-141.867,86.08 C50.027,178.347,0,232.64,0,298.667c0,70.72,57.28,128,128,128h277.333C464.213,426.667,512,378.88,512,320 C512,263.68,468.16,218.027,412.907,214.08z M256,384L149.333,277.333h64V192h85.333v85.333h64L256,384z'/%3E%3C/g%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3C/svg%3E");
+
+            @media (min-width: 992px) {
+                bottom: 2.5rem;
+            }
+        }
     }
 
     .#{$module}__section {
-        // max-width: 35rem;
-        // margin: auto;
-        // margin-bottom: 1rem;
-
         @media (min-width: 992px) {
             max-height: 100vh;
             overflow: auto;
